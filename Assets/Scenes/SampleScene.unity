@@ -152,6 +152,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b17262c5b5f1ad479894f222bc5aba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilePrefab: {fileID: 2626004486206650588, guid: 0f89942760b93a147a61bbf571545f0b, type: 3}
+  tileSprites:
+  - {fileID: -918142193, guid: 2e8c65e6ad1ff6e4ba0d1da65e2fa062, type: 3}
+  - {fileID: -517170736, guid: 2e8c65e6ad1ff6e4ba0d1da65e2fa062, type: 3}
+  - {fileID: 116292918, guid: 2e8c65e6ad1ff6e4ba0d1da65e2fa062, type: 3}
+  - {fileID: 1382572442, guid: 2e8c65e6ad1ff6e4ba0d1da65e2fa062, type: 3}
+  - {fileID: -880175637, guid: 2e8c65e6ad1ff6e4ba0d1da65e2fa062, type: 3}
+  - {fileID: 852881993, guid: 2e8c65e6ad1ff6e4ba0d1da65e2fa062, type: 3}
+  - {fileID: 635427472, guid: 2e8c65e6ad1ff6e4ba0d1da65e2fa062, type: 3}
+  - {fileID: 846801536, guid: 2e8c65e6ad1ff6e4ba0d1da65e2fa062, type: 3}
+  - {fileID: 1795559609, guid: 2e8c65e6ad1ff6e4ba0d1da65e2fa062, type: 3}
+  gridSize: {x: 5, y: 5}
+  tilelength: {x: 0.64, y: 0.64}
+  spaceLength: 0
+  middlePoint: {x: 0, y: 2}
 --- !u!4 &277035424
 Transform:
   m_ObjectHideFlags: 0
