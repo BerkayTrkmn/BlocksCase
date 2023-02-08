@@ -26,8 +26,6 @@ namespace HelloScripts
 
     public class TouchManager : MonoBehaviour
     {
-        public static TouchManager Instance;
-
         private TouchInput _touch;
 
         public bool isActive = true;
@@ -35,19 +33,7 @@ namespace HelloScripts
         public TouchEvent onTouchBegan = null, onTouchMoved = null, onTouchEnded = null;
 
         public UnityAction OnTouch;
-
-        private void Awake()
-        {
-           
-            if (Instance)
-            {
-                Destroy(this);
-                return;
-            }
-            Instance = this;
-        }
-
-
+      
         private void Update()
         {
             if (!isActive) return;
