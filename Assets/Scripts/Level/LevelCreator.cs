@@ -10,7 +10,8 @@ public enum LevelDataUse
 }
 public class LevelCreator : MonoBehaviour
 {
-    private GridCreator gridCreator;
+    public static LevelCreator instance;
+    [HideInInspector]public GridCreator gridCreator;
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private List<Sprite> tileSprites;
     LevelData data;
@@ -21,6 +22,12 @@ public class LevelCreator : MonoBehaviour
     [SerializeField] private float spaceLength;
     [SerializeField] private Vector2 middlePoint;
 
+    private void Awake()
+    {
+        if(instance == null)
+        instance = this;
+    }
+
     void Start()
     {
        data = new LevelData() { GridSize = gridSize, Tilelength = tilelength, SpaceLength = spaceLength, MiddlePoint = middlePoint };
@@ -29,7 +36,7 @@ public class LevelCreator : MonoBehaviour
         
      
     }
-
+   
    
 }
 public class LevelData

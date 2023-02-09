@@ -11,9 +11,12 @@ public class Player : MonoBehaviour
     private TouchManager touchManager;
 
     private Tetrimino draggedTetrimino;
+    private Vector3 draggedTetriminoStartPosition;
+    int tileLayer;
     private void OnEnable()
     {
-        touchManager =GetComponent<TouchManager>();
+        tileLayer = LayerMask.GetMask("Tile");
+        touchManager = GetComponent<TouchManager>();
         touchManager.onTouchBegan += OnTouchBegan;
         touchManager.onTouchMoved += OnTouchMoved;
         touchManager.onTouchEnded += OnTouchEnded;
@@ -23,8 +26,10 @@ public class Player : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(touch.WorldPosition, Vector2.left, 15f);
         if (hit.collider.gameObject.GetComponentInParent<Tetrimino>() != null)
-        { draggedTetrimino = hit.collider.gameObject.GetComponentInParent<Tetrimino>();
-            draggedTetrimino.draggedCollider = hit.collider;
+        {
+            draggedTetrimino = hit.collider.gameObject.GetComponentInParent<Tetrimino>();
+            draggedTetrimino.draggedPart = hit.collider.GetComponent<TetriminoPart>();
+            draggedTetriminoStartPosition = draggedTetrimino.transform.position;
         }
     }
 
@@ -38,14 +43,26 @@ public class Player : MonoBehaviour
 
     private void OnTouchEnded(TouchInput touch)
     {
-        draggedTetrimino.draggedCollider.enabled = false;
-        RaycastHit2D hit = Physics2D.Raycast(touch.WorldPosition, Vector2.left, 15f);
-        if (hit.collider.gameObject.GetComponentInParent<Tile>() != null)
-            Debug.Log("Tile found");
 
-        draggedTetrimino.draggedCollider.enabled = true;
-        draggedTetrimino.draggedCollider = null;
+        if (draggedTetrimino == null) return;
+        RaycastHit2D hit = Physics2D.Raycast(touch.WorldPosition, Vector2.left, 15f, tileLayer);
+        Debug.Log(tileLayer);
+        //Check tile if not founded return start point
+        if (hit.collider != null && hit.collider.transform.TryGetComponent<Tile>(out Tile _selectedTile))
+        {
+            //CheckTetrimino location
+            if (draggedTetrimino.CheckTetriminoInsideOfLevel(_selectedTile))
+                draggedTetrimino.DropTetriminoToSelectedTile(_selectedTile);
+            else
+                draggedTetrimino.TetriminoMovesToPosition(draggedTetriminoStartPosition, 0.5f);
+        }
+        else
+            draggedTetrimino.TetriminoMovesToPosition(draggedTetriminoStartPosition, 0.5f);
+        draggedTetrimino.draggedPart = null;
+        draggedTetrimino = null;
     }
+
+
     private void OnDisable()
     {
         touchManager.onTouchBegan -= OnTouchBegan;

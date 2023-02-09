@@ -11,7 +11,7 @@ public enum TilePartType
 [System.Serializable]
 public class Tile : MonoBehaviour
 {
-    private Vector2 _location;
+    public Vector2 _location;
     private SpriteRenderer spriteRenderer;
     [SerializeField]private Dictionary<TilePartType, bool> isTilePartsOccupied;
 
