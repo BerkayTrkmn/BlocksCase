@@ -37,10 +37,10 @@ public class GridCreator
         _middlePoint = middlePoint;
     }
 
-    public List<Tile> CreateGrid()
+    public Dictionary<Vector2, Tile> CreateGrid()
     {
         Vector2 startPoint = GetGridStartPoint();
-        List<Tile> tileGrid = new List<Tile>();
+        Dictionary<Vector2,Tile> tileGrid = new Dictionary<Vector2,Tile>();
 
         for (int y = 0; y < GridSize.y; y++)
         {
@@ -51,6 +51,7 @@ public class GridCreator
                     new Vector2((1 / 2 * TileLength.x) + (x * TileLength.x) + (x * SpaceLength),
                                 (1 / 2 * TileLength.y) + (y * TileLength.y) + (y * SpaceLength)));
                 currentTile.SetTile(currentLocation, SetTileSprite(currentLocation));
+                tileGrid.Add(currentTile._location, currentTile);
             }
         }
 

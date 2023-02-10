@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +9,7 @@ public enum LevelDataUse
     Json,
     ScriptableObject
 }
+public delegate void LevelStateEvent();
 public class LevelCreator : MonoBehaviour
 {
     public static LevelCreator instance;
@@ -22,6 +24,10 @@ public class LevelCreator : MonoBehaviour
     [SerializeField] private float spaceLength;
     [SerializeField] private Vector2 middlePoint;
 
+    [HideInInspector] public Dictionary<Vector2, Tile> tileGrid;
+
+    public static event LevelStateEvent onLevelCompleted;
+
     private void Awake()
     {
         if(instance == null)
@@ -32,12 +38,36 @@ public class LevelCreator : MonoBehaviour
     {
        data = new LevelData() { GridSize = gridSize, Tilelength = tilelength, SpaceLength = spaceLength, MiddlePoint = middlePoint };
         gridCreator = new GridCreator(data.GridSize, tilePrefab, data.Tilelength, data.SpaceLength, tileSprites, data.MiddlePoint);
-        gridCreator.CreateGrid();
+        tileGrid = gridCreator.CreateGrid();
         
      
     }
-   
-   
+    private void OnEnable()
+    {
+        Tetrimino.onTetriminoInserted += CheckLevelEnd;
+    }
+
+    private void CheckLevelEnd()
+    {
+        if (IsLevelEnded())
+            onLevelCompleted?.Invoke();
+    }
+
+    public bool IsLevelEnded()
+    {
+        foreach (var tile in tileGrid)
+        {
+            foreach (var tilePart in tile.Value.TilePartsOccupancy)
+            {
+                if (!tilePart.Value) return false;
+            }
+        }
+        return true;
+    }
+    private void OnDisable()
+    {
+        Tetrimino.onTetriminoInserted -= CheckLevelEnd;
+    }
 }
 public class LevelData
 {

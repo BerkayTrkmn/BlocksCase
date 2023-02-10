@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8188966597323590646}
   - component: {fileID: 8188966597323590645}
   - component: {fileID: 8188966597323590644}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UpPick64x64
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TetriminoPartBox
       objectReference: {fileID: 0}
+    - target: {fileID: 7358921051623265073, guid: 5d46a1c4e6edc47438dcdcc303a6761e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d46a1c4e6edc47438dcdcc303a6761e, type: 3}
 --- !u!4 &8724271909931878176 stripped
@@ -249,6 +253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TetriminoPartBox (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7358921051623265073, guid: 5d46a1c4e6edc47438dcdcc303a6761e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d46a1c4e6edc47438dcdcc303a6761e, type: 3}
 --- !u!4 &5551187769486901483 stripped
@@ -266,6 +274,10 @@ PrefabInstance:
     - target: {fileID: 4452641186311544140, guid: 6999edb9532589e4f938a401503f435c, type: 3}
       propertyPath: m_Name
       value: TetriminoPartEdgeUpRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452641186311544140, guid: 6999edb9532589e4f938a401503f435c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4452641186311544141, guid: 6999edb9532589e4f938a401503f435c, type: 3}
       propertyPath: m_RootOrder

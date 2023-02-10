@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7816411281078640589}
   - component: {fileID: 7816411281078640578}
   - component: {fileID: 7816411281078640579}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PickTetrimino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,6 +180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TetriminoPartBox
       objectReference: {fileID: 0}
+    - target: {fileID: 7358921051623265073, guid: 5d46a1c4e6edc47438dcdcc303a6761e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d46a1c4e6edc47438dcdcc303a6761e, type: 3}
 --- !u!4 &8539772582607570698 stripped
@@ -197,6 +201,10 @@ PrefabInstance:
     - target: {fileID: 382296743981220776, guid: 79c7490c95d723847bb64edbe0d2b987, type: 3}
       propertyPath: m_Name
       value: TetriminoPartEdgeDownRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 382296743981220776, guid: 79c7490c95d723847bb64edbe0d2b987, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 382296743981220777, guid: 79c7490c95d723847bb64edbe0d2b987, type: 3}
       propertyPath: m_RootOrder
@@ -316,6 +324,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TetriminoPartBox (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7358921051623265073, guid: 5d46a1c4e6edc47438dcdcc303a6761e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d46a1c4e6edc47438dcdcc303a6761e, type: 3}
 --- !u!4 &2997214098292208711 stripped
@@ -381,6 +393,10 @@ PrefabInstance:
     - target: {fileID: 7358921051623265073, guid: 5d46a1c4e6edc47438dcdcc303a6761e, type: 3}
       propertyPath: m_Name
       value: TetriminoPartBox (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358921051623265073, guid: 5d46a1c4e6edc47438dcdcc303a6761e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d46a1c4e6edc47438dcdcc303a6761e, type: 3}

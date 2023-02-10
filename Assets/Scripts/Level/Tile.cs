@@ -13,13 +13,13 @@ public class Tile : MonoBehaviour
 {
     public Vector2 _location;
     private SpriteRenderer spriteRenderer;
-    [SerializeField]private Dictionary<TilePartType, bool> isTilePartsOccupied;
+    [SerializeField]private Dictionary<TilePartType, bool> tilePartsOccupancy;
 
-    public Dictionary<TilePartType, bool> IsTilePartsOccupied { get => isTilePartsOccupied; set => isTilePartsOccupied = value; }
+    public Dictionary<TilePartType, bool> TilePartsOccupancy { get => tilePartsOccupancy; set => tilePartsOccupancy = value; }
 
     public void SetTile(Vector2 location,Sprite _tileSprite)
     {
-        if (isTilePartsOccupied == null) isTilePartsOccupied = new Dictionary<TilePartType, bool>();
+        if (tilePartsOccupancy == null) tilePartsOccupancy = new Dictionary<TilePartType, bool>();
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
         _location = location;
         spriteRenderer.sprite = _tileSprite;
@@ -30,7 +30,7 @@ public class Tile : MonoBehaviour
         string[] PieceTypeNames = System.Enum.GetNames(typeof(TilePartType));
         for (int i = 0; i < PieceTypeNames.Length; i++)
         {
-            IsTilePartsOccupied.Add((TilePartType)i, false);
+            TilePartsOccupancy.Add((TilePartType)i, false);
         }
     }
     public bool CheckTileIsOccupied()
@@ -38,13 +38,13 @@ public class Tile : MonoBehaviour
         string[] PieceTypeNames = System.Enum.GetNames(typeof(TilePartType));
         for (int i = 0; i < PieceTypeNames.Length; i++)
         {
-            if (!IsTilePartsOccupied[(TilePartType)i]) return false;
+            if (!TilePartsOccupancy[(TilePartType)i]) return false;
         }
         return true;
     }
     public void SetTilePart(TilePartType type, bool isOccupied)
     {
-        isTilePartsOccupied[type] = isOccupied;
+        tilePartsOccupancy[type] = isOccupied;
     }
 }
 
