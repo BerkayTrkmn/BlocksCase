@@ -9,6 +9,8 @@ using UnityEngine;
 /// Tetriminolar grid gibi parçalara bölünmüþtür.
 /// Bu scriptte Tetriminolarýn davranýþ özellikleri bulunmaktadýr.
 /// Tetriminolarýn playerýn yaptýðý olaylara karþý verdikleri cevaplar bu classtadýr
+/// Tetriminonun býrakýlmasý, gridin içinde mi kontrolü, yerine geri dönmesi ve yerleþtiði yerin ayarlanmasý buradan yapýlmaktadýr.
+/// NOT: Grid içinde deðilse yerine geri dönüyor.
 /// </summary>
 public delegate void OnTetriminoDropped();
 public class Tetrimino : MonoBehaviour
