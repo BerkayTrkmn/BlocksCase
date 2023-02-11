@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// ONEMLI: Bu Projede blocklar tetrimino olarak adlandýrýlmaktadýr.
+/// 
+/// Tetriminolarýn bir parçasýnýn davranýþýnýn bulunduðu class
+/// fonksyonlarý aþaðýdaki gibidir
+/// </summary>
 public class TetriminoPart : MonoBehaviour
 {
     public Vector2 tetriminoPartLocation;
     public Vector2 tetrominoTileLocation = Vector2.one * -1 ;
-    public List<TilePartType> tetriminoCovarage;
     public Collider2D partCollider;
 
     private void Awake()

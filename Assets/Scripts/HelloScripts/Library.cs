@@ -136,12 +136,12 @@ namespace HelloScripts
         /// <param name="createdGO"></param>
         /// <param name="trans"></param>
         /// <param name="rotation"></param>
-        public static void CreateGameObjectandPlaceIt(this GameObject prefab, Transform trans, Vector3 rotation)
+        public static void CreateGameObjectandPlaceIt<T>(this T prefab, Transform trans, Vector3 rotation) where T : Component
         {
-            GameObject go = Object.Instantiate(prefab);
+            T component = Object.Instantiate(prefab);
 
-            go.transform.position = trans.position;
-            go.transform.eulerAngles = rotation;
+            component.transform.position = trans.position;
+            component.transform.eulerAngles = rotation;
         }
 
         /// <summary>

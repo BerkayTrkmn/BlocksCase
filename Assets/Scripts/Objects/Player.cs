@@ -4,7 +4,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+/// <summary>
+/// ONEMLI: Bu Projede blocklar tetrimino olarak adlandýrýlmaktadýr.
+/// 
+/// Bu scriptte playerýn yaptýðý hareketler(Drag, Touch vs) ile ilgili tüm olaylar bulunmaktadýr
+/// 1. TouchManager: Playerýn týklamalarýný touch a çeviren benim scriptim.
+/// 2.OnTouchBegan Actionu: Oyuncu týklamaya baþlayýnca týklanan yerde tetrimino var mý ve hangi tetrimino olduðunu belirleyen fonksiyon
+/// 3.OnTouchMoved:Tetriminoyu hareket ettiren(Drag) fonksiyon Update fonksiyonu üzerinden çalýþýr.
+/// 4.OnTouch Ended:Tetrimino nereye býrakýldýðýný belirleyip ona göre bir cevap dönen fonsiyon
+/// </summary>
 public class Player : MonoBehaviour
 {
 
@@ -28,15 +36,12 @@ public class Player : MonoBehaviour
     private void OnTouchBegan(TouchInput touch)
     {
         RaycastHit2D hit = Physics2D.Raycast(touch.WorldPosition, Vector2.zero, 15f, tetriminoLayer);
-        Debug.Log(hit.collider.name);
         if (hit.collider != null && hit.collider.gameObject.GetComponentInParent<Tetrimino>() != null)
         {
             Debug.Log(hit.collider.name);
             draggedTetrimino = hit.collider.gameObject.GetComponentInParent<Tetrimino>();
             draggedTetrimino.draggedPart = hit.collider.GetComponent<TetriminoPart>();
             draggedTetriminoStartPosition = draggedTetrimino.transform.position;
-
-            RemoveTetriminoFromGrid(draggedTetrimino);
 
         }
     }
@@ -62,23 +67,17 @@ public class Player : MonoBehaviour
             if (draggedTetrimino.CheckTetriminoInsideOfLevel(_selectedTile))
                 draggedTetrimino.DropTetriminoToSelectedTile(_selectedTile);
             else
-                draggedTetrimino.TetriminoMovesToPosition(draggedTetriminoStartPosition, 0.5f);
+                //Return to start position
+                draggedTetrimino.TetriminoMovesToPosition(draggedTetriminoStartPosition, 0.2f);
         }
         else
-            draggedTetrimino.TetriminoMovesToPosition(draggedTetriminoStartPosition, 0.5f);
+            //Return to start position
+            draggedTetrimino.TetriminoMovesToPosition(draggedTetriminoStartPosition, 0.2f);
 
         draggedTetrimino.draggedPart = null;
         draggedTetrimino = null;
     }
 
-    private void RemoveTetriminoFromGrid(Tetrimino tetrimino)
-    {
-        if (tetrimino.isPlaced)
-        {
-            tetrimino.RemoveTetriminoStateInsideGrid();
-        }
-
-    }
 
     private void OnDisable()
     {

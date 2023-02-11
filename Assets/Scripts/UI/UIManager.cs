@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        LevelCreator.onLevelCompleted += OnLevelCompleted;
+        LevelCreator.OnLevelCompleted += OnLevelCompleted;
     }
 
     private void OnLevelCompleted()
@@ -20,6 +20,6 @@ public class UIManager : MonoBehaviour
     }
     private void OnDisable()
     {
-        LevelCreator.onLevelCompleted -= OnLevelCompleted;
+        LevelCreator.OnLevelCompleted -= OnLevelCompleted;
     }
 }

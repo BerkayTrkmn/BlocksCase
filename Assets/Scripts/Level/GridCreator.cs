@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using HelloScripts;
-
+/// <summary>
+/// Gridi yapan fonksiyonlarýn bulunduðu class
+/// </summary>
 public class GridCreator
 {
     private Vector2 _gridSize;
